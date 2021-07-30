@@ -1,0 +1,17 @@
+<h1 mat-dialog-title>{{ title | titlecase }}</h1>
+<div mat-dialog-content><div [innerHtml]="message"></div></div>
+<div mat-dialog-actions disableClose="true">
+  <button mat-raised-button mat-dialog-close tabindex="-1">
+    {{ cancelButtonText }}
+  </button>
+  <button
+    mat-raised-button
+    color="primary"
+    tabindex="1"
+    cdkFocusInitial
+    (click)="onConfirmClick()"
+    (keyup.enter)="onConfirmClick()"
+  >
+    {{ confirmButtonText }}
+  </button>
+</div>

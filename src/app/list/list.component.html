@@ -1,0 +1,28 @@
+<div cdkDropListGroup>
+  <div class="container">
+    <div class="job-list-container" *ngFor="let list of jobLists; let i = index">
+      <div class="list-title">
+        <h2 class="list-name">{{ list.name }} ({{ list.jobs.length }})</h2>
+        <button mat-button color="accent" (click)="onConfirmDelelteList(i)" (keyup.enter)="onConfirmDelelteList(i)">
+          <mat-icon color="accent">delete_outline</mat-icon>
+        </button>
+      </div>
+  
+      <div
+        cdkDropList
+        [cdkDropListData]="list.jobs"
+        class="job-list"
+        (cdkDropListDropped)="drop($event)"
+      >
+        <div class="job-item" *ngFor="let item of list.jobs, let indexJob=index" cdkDrag>
+          {{ item }}
+          <button mat-button color="accent" (click)="onConfirmDelelteJob(i, indexJob)" (keyup.enter)="onConfirmDelelteJob(i, indexJob)">
+            <mat-icon color="accent">delete_outline</mat-icon>
+          </button>
+        </div>
+      </div>
+      <app-add-new placeholder="New Job" [listIndex]="i"></app-add-new>
+    </div>
+    <app-add-new placeholder="New List"></app-add-new>
+  </div>
+</div>
